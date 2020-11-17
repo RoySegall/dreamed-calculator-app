@@ -21,6 +21,15 @@
       font-size: 1.5em;
       border-bottom: solid 1px white;
       background: gray;
+      position: relative;
+
+      .first-number {
+        font-size: .5em;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        color: #e4eaf2;
+      }
     }
 
     .buttons {
@@ -63,13 +72,33 @@
         flex-direction: column;
 
         button {
-          height: 100%;
           width: 1.75em;
           background: #ff9900;
           color: white;
           border: none;
           outline: 0;
           font-size: 1.5em;
+          transition: .5s;
+
+          &:active {
+            background: #ffd084;
+            color: #b5b4b4;
+            transition: .5s;
+          }
+
+          &.disabled {
+            background: #8a6324;
+            color: white;
+          }
+
+          &.plus {
+            height: 75.5%;
+            border-bottom: solid black 1px;
+          }
+
+          &.equals {
+            height: 25%;
+          }
         }
       }
 
@@ -80,7 +109,5 @@
       }
     }
   }
-
-
 }
 
