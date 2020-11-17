@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+  .wrapper {
+    border: white solid 1px;
+    border-radius: 5px;
+
+    .results {
+      height: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      border-bottom: solid 1px white;
+      background: gray;
+    }
+
+    .buttons {
+      display: flex;
+
+      section {
+        display: flex;
+
+        &.numbers {
+          display: flex;
+          flex-direction: column;
+          border-right: purple solid 1px;
+
+          button {
+            width: 3em;
+            height: 3em;
+            font-size: .75em;
+            border: none;
+            outline: none;
+
+            &:active {
+              background: black;
+              color: white;
+            }
+          }
+
+          .upper, .middle, .bottom {
+            border-bottom: 1px solid #54972C;
+          }
+
+          .middle-button {
+            border-left: 1px solid #54972C;
+            border-right: 1px solid #54972C;
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+
+        button {
+          height: 100%;
+          width: 1.75em;
+          background: #ff9900;
+          color: white;
+          border: none;
+          outline: 0;
+          font-size: 1.5em;
+        }
+      }
+
+      .ground-zero {
+        button {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+
+}
+
