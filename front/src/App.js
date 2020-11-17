@@ -20,9 +20,21 @@ const NumberSection = ({numbers, sectionName, setCurrentNumber, currentNumber}) 
     )}
 </section>
 
+const calculate = async (currentNumber, secondNumber, resetHndler) => {
+    const response = await fetch(`http://localhost:8000/calculator/plus/${currentNumber}/${secondNumber}`);
+    const json = await response.json();
+    resetHndler(json.results);
+}
+
 function App() {
     const [currentNumber, setCurrentNumber] = useState(0);
     const [secondNumber, setSecondNumber] = useState(null);
+    const [resetNextClick, setResetNextClick] = useState(false);
+
+    const foo = (results) => {
+        setCurrentNumber(results);
+        setSecondNumber(null);
+    };
 
     return (
         <div className="App">
@@ -48,7 +60,11 @@ function App() {
                             setSecondNumber(currentNumber);
                             setCurrentNumber(0);
                         }} disabled={secondNumber}>+</button>
-                        <button className={`equals ${!secondNumber ? 'disabled' : ''}`} disabled={!secondNumber}>=</button>
+                        <button
+                            className={`equals ${!secondNumber ? 'disabled' : ''}`}
+                            disabled={!secondNumber}
+                            onClick={async () => await calculate(currentNumber, secondNumber, foo)}
+                        >=</button>
                     </section>
                 </section>
             </div>
