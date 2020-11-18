@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.scss';
+import gif from './not-working.gif';
 
 const handleNumberClick = (setCurrentNumber, currentNumber, selectedNumber) => {
     if (currentNumber === 0) {
@@ -20,24 +21,35 @@ const NumberSection = ({numbers, sectionName, setCurrentNumber, currentNumber}) 
     )}
 </section>
 
-const calculate = async (currentNumber, secondNumber, resetHndler) => {
-    const response = await fetch(`http://localhost:8000/calculator/plus/${currentNumber}/${secondNumber}`);
-    const json = await response.json();
-    resetHndler(json.results);
+const calculate = async (currentNumber, secondNumber, resetHandler, setShowModal) => {
+    try {
+        const response = await fetch(`http://localhost:8000/calculator/plus/${currentNumber}/${secondNumber}`);
+        const json = await response.json();
+        resetHandler(json.results);
+    } catch (e) {
+        setShowModal(true);
+    }
 }
+
+const NotWorkingGiff = ({setShowModal}) => <div className="not-working">
+    <a className="close" onClick={() => {setShowModal(false);}}>x</a>
+    <img src={gif} />
+</div>
 
 function App() {
     const [currentNumber, setCurrentNumber] = useState(0);
     const [secondNumber, setSecondNumber] = useState(null);
-    const [resetNextClick, setResetNextClick] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-    const foo = (results) => {
+    const resetCalculatorButtons = (results) => {
         setCurrentNumber(results);
         setSecondNumber(null);
     };
 
     return (
         <div className="App">
+            {showModal && <NotWorkingGiff setShowModal={setShowModal} /> }
+
             <div className="wrapper">
                 <section className="results"><div className="first-number">{secondNumber}</div> {currentNumber}</section>
                 <section className="buttons">
@@ -63,7 +75,7 @@ function App() {
                         <button
                             className={`equals ${!secondNumber ? 'disabled' : ''}`}
                             disabled={!secondNumber}
-                            onClick={async () => await calculate(currentNumber, secondNumber, foo)}
+                            onClick={async () => await calculate(currentNumber, secondNumber, resetCalculatorButtons, setShowModal)}
                         >=</button>
                     </section>
                 </section>

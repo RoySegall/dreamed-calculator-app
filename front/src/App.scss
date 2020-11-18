@@ -9,103 +9,131 @@
   font-size: calc(10px + 2vmin);
   color: white;
 
+  .not-working {
+    position: absolute;
+    z-index: 1;
+    top: 35%;
+    border: white 1px solid;
+    padding: .25em;
+    background: white;
+    box-shadow: 0px 0px 30px 10px #800000;
+
+    img {
+      height: 10em;
+    }
+
+    .close {
+      cursor: pointer;
+      color: red;
+      position: absolute;
+      background: white;
+      border-radius: 20px;
+      top: -25px;
+      left: -15px;
+      width: 42px;
+      height: 40px;
+      font-weight: 700;
+      border: solid 2px #ff9900;
+    }
+  }
+
   .wrapper {
     border: white solid 1px;
     border-radius: 5px;
+  }
 
-    .results {
-      height: 2em;
+  .results {
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    border-bottom: solid 1px white;
+    background: gray;
+    position: relative;
+
+    .first-number {
+      font-size: .5em;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      color: #e4eaf2;
+    }
+  }
+
+  .buttons {
+    display: flex;
+
+    section {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.5em;
-      border-bottom: solid 1px white;
-      background: gray;
-      position: relative;
 
-      .first-number {
-        font-size: .5em;
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        color: #e4eaf2;
+      &.numbers {
+        display: flex;
+        flex-direction: column;
+        border-right: purple solid 1px;
+
+        button {
+          width: 3em;
+          height: 3em;
+          font-size: .75em;
+          border: none;
+          outline: none;
+
+          &:active {
+            background: black;
+            color: white;
+          }
+        }
+
+        .upper, .middle, .bottom {
+          border-bottom: 1px solid #54972C;
+        }
+
+        .middle-button {
+          border-left: 1px solid #54972C;
+          border-right: 1px solid #54972C;
+        }
       }
     }
 
-    .buttons {
+    .actions {
       display: flex;
+      flex-direction: column;
 
-      section {
-        display: flex;
+      button {
+        width: 1.75em;
+        background: #ff9900;
+        color: white;
+        border: none;
+        outline: 0;
+        font-size: 1.5em;
+        transition: .5s;
 
-        &.numbers {
-          display: flex;
-          flex-direction: column;
-          border-right: purple solid 1px;
-
-          button {
-            width: 3em;
-            height: 3em;
-            font-size: .75em;
-            border: none;
-            outline: none;
-
-            &:active {
-              background: black;
-              color: white;
-            }
-          }
-
-          .upper, .middle, .bottom {
-            border-bottom: 1px solid #54972C;
-          }
-
-          .middle-button {
-            border-left: 1px solid #54972C;
-            border-right: 1px solid #54972C;
-          }
-        }
-      }
-
-      .actions {
-        display: flex;
-        flex-direction: column;
-
-        button {
-          width: 1.75em;
-          background: #ff9900;
-          color: white;
-          border: none;
-          outline: 0;
-          font-size: 1.5em;
+        &:active {
+          background: #ffd084;
+          color: #b5b4b4;
           transition: .5s;
+        }
 
-          &:active {
-            background: #ffd084;
-            color: #b5b4b4;
-            transition: .5s;
-          }
+        &.disabled {
+          background: #8a6324;
+          color: white;
+        }
 
-          &.disabled {
-            background: #8a6324;
-            color: white;
-          }
+        &.plus {
+          height: 75.5%;
+          border-bottom: solid black 1px;
+        }
 
-          &.plus {
-            height: 75.5%;
-            border-bottom: solid black 1px;
-          }
-
-          &.equals {
-            height: 25%;
-          }
+        &.equals {
+          height: 25%;
         }
       }
+    }
 
-      .ground-zero {
-        button {
-          width: 100% !important;
-        }
+    .ground-zero {
+      button {
+        width: 100% !important;
       }
     }
   }
