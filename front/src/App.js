@@ -23,7 +23,7 @@ const NumberSection = ({numbers, sectionName, setCurrentNumber, currentNumber}) 
 
 const calculate = async (currentNumber, secondNumber, resetHandler, setShowModal) => {
     try {
-        const response = await fetch(`http://localhost:8000/calculator/plus/${currentNumber}/${secondNumber}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND}/calculator/plus/${currentNumber}/${secondNumber}`);
         const json = await response.json();
         resetHandler(json.results);
     } catch (e) {
