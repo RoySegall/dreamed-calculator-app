@@ -19,6 +19,8 @@ from django.urls import path
 from calculator.views import calculator_plus
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('calculator/plus/<int:first_number>/<int:second_number>', calculator_plus),
+    path(
+        'calculator/plus/<int:first_number>/<int:second_number>',
+        calculator_plus
+    ),
 ]
