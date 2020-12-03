@@ -15,7 +15,7 @@ const NumberSection = ({numbers, sectionName, setCurrentNumber, currentNumber}) 
     {numbers.map((number, index) =>
         <button
             key={number}
-            className={index === 1 ? 'middle-button' : ''}
+            className={`number-${number} ${index === 1 ? 'middle-button' : ''}`}
             onClick={() => {handleNumberClick(setCurrentNumber, currentNumber, number)}}
         >{number}</button>
     )}
@@ -32,7 +32,9 @@ const calculate = async (currentNumber, secondNumber, resetHandler, setShowModal
 }
 
 const NotWorkingGiff = ({setShowModal}) => <div className="not-working">
-    <a className="close" onClick={() => {setShowModal(false);}}>x</a>
+    <a className="close" onClick={() => {setShowModal(false);}}>
+        <div className="button">X</div>
+    </a>
     <img src={gif} />
 </div>
 
