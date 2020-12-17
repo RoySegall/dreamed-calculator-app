@@ -36,11 +36,10 @@ describe('Testing the calculator app', () => {
         cy.visit('/')
 
         cy.server();
-        // The error in the app is raised because the `response.json()` throws an exception due to not a valid JSON
-        // response.
+
+        // Hijacking the response from the server; The error in the app is raised because the `response.json()`
+        // throws an exception due to not a valid JSON response.
         cy.route(() => {
-            // your logic here
-            // return an appropriate routing object here
             return {
                 method: 'GET',
                 url: '/calculator/plus/*/*',
@@ -57,19 +56,18 @@ describe('Testing the calculator app', () => {
         cy.get('.buttons .number-6').click();
 
         cy.get('.actions .equals').click();
+
         // Verifying the results.
         cy.get('div.not-working').should('be.visible');
     });
 
-    it('Verify we can catch any exception', () => {
+    it('Returning a different number, just to show we can return any result we want! 💪', () => {
         cy.visit('/')
 
         cy.server();
-        // The error in the app is raised because the `response.json()` throws an exception due to not a valid JSON
-        // response.
+
+        // Hijacking the response from the server.
         cy.route(() => {
-            // your logic here
-            // return an appropriate routing object here
             return {
                 method: 'GET',
                 url: '/calculator/plus/*/*',
@@ -88,6 +86,7 @@ describe('Testing the calculator app', () => {
         cy.get('.buttons .number-6').click();
 
         cy.get('.actions .equals').click();
+
         // Verifying another error.
         cy.contains('.results', 2);
     });
