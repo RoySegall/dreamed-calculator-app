@@ -24,9 +24,11 @@ const NumberSection = ({numbers, sectionName, setCurrentNumber, currentNumber}) 
 const calculate = async (currentNumber, secondNumber, resetHandler, setShowModal) => {
     try {
         const response = await fetch(`${process.env.REACT_APP_BACKEND}/calculator/plus/${currentNumber}/${secondNumber}`);
+        console.log(response);
         const json = await response.json();
         resetHandler(json.results);
     } catch (e) {
+        console.log(e);
         setShowModal(true);
     }
 }

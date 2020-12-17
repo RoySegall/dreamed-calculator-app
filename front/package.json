@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "node_modules/.bin/cypress run --browser chrome"
+    "e2e": "node_modules/.bin/cypress run --browser chrome --no-exit"
   },
   "eslintConfig": {
     "extends": [
