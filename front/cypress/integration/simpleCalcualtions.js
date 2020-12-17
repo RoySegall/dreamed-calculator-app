@@ -16,7 +16,7 @@ describe('Testing the calculator app', () => {
       cy.contains('.results', 2);
     });
 
-    it('5 + 2 should raise the modal', () => {
+    it('5 + 1 should raise the modal', () => {
       cy.visit('http://localhost:3000');
 
       // Verifying we started with a 0.
